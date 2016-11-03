@@ -14,42 +14,42 @@ class UpgradeViewController: UIViewController {
     @IBOutlet weak var upgradeButton: UIButton!
     @IBOutlet weak var restoreButton: UIButton!
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         UpgradeManager.sharedInstance.priceForUpgrade { (price) in
             self.priceLabel.text = "$\(price)"
-            self.upgradeButton.enabled = true
-            self.restoreButton.enabled = true
+            self.upgradeButton.isEnabled = true
+            self.restoreButton.isEnabled = true
         }
     }
 
-    @IBAction func doneButtonTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func doneButtonTapped(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func upgradeButtonTapped(sender: AnyObject) {
+    @IBAction func upgradeButtonTapped(_ sender: AnyObject) {
         UpgradeManager.sharedInstance.upgrade { (succeeded) -> (Void) in
             if succeeded {
-                let alertController = UIAlertController(title: "Upgraded!", message: "Thanks for upgrading. You can now view quotes from famous people.", preferredStyle: .Alert)
-                let doneAction = UIAlertAction(title: "Done", style: .Default, handler: { (action) in
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                let alertController = UIAlertController(title: "Upgraded!", message: "Thanks for upgrading. You can now view quotes from famous people.", preferredStyle: .alert)
+                let doneAction = UIAlertAction(title: "Done", style: .default, handler: { (action) in
+                    self.dismiss(animated: true, completion: nil)
                 })
                 
                 alertController.addAction(doneAction)
-                self.presentViewController(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
             }
         }
     }
     
-    @IBAction func restorePurchasesButtonTapped(sender: AnyObject) {
+    @IBAction func restorePurchasesButtonTapped(_ sender: AnyObject) {
         UpgradeManager.sharedInstance.restorePurchases { (succeeded) -> (Void) in
             if succeeded {
-                let alertController = UIAlertController(title: "Restored!", message: "Your purchases have been restored. You can now view quotes from famous people.", preferredStyle: .Alert)
-                let doneAction = UIAlertAction(title: "Done", style: .Default, handler: { (action) in
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                let alertController = UIAlertController(title: "Restored!", message: "Your purchases have been restored. You can now view quotes from famous people.", preferredStyle: .alert)
+                let doneAction = UIAlertAction(title: "Done", style: .default, handler: { (action) in
+                    self.dismiss(animated: true, completion: nil)
                 })
                 
                 alertController.addAction(doneAction)
-                self.presentViewController(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
             }
         }
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4ECAAEB51DCB410F00628EA4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ECAAEB41DCB410F00628EA4 /* StoreKit.framework */; };
 		5443E7591D216976004E41AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5443E7581D216976004E41AE /* AppDelegate.swift */; };
 		5443E75B1D216976004E41AE /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5443E75A1D216976004E41AE /* QuoteViewController.swift */; };
 		5443E75E1D216976004E41AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5443E75C1D216976004E41AE /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4ECAAEB41DCB410F00628EA4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5443E7551D216976004E41AE /* IAPDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAPDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5443E7581D216976004E41AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5443E75A1D216976004E41AE /* QuoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
@@ -37,17 +39,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECAAEB51DCB410F00628EA4 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4ECAAEB31DCB410F00628EA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4ECAAEB41DCB410F00628EA4 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5443E74C1D216976004E41AE = {
 			isa = PBXGroup;
 			children = (
 				5443E7571D216976004E41AE /* IAPDemo */,
 				5443E7561D216976004E41AE /* Products */,
+				4ECAAEB31DCB410F00628EA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,10 +120,11 @@
 				TargetAttributes = {
 					5443E7541D216976004E41AE = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = KUK8W9TW2G;
+						DevelopmentTeam = C3BX32XR8J;
+						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -271,10 +284,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = C3BX32XR8J;
 				INFOPLIST_FILE = IAPDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.careerfoundry.randomquotes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.careerfoundry.randomquotes.pranavkasetti;
 				PRODUCT_NAME = IAPDemo;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -282,10 +297,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = C3BX32XR8J;
 				INFOPLIST_FILE = IAPDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.careerfoundry.randomquotes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.careerfoundry.randomquotes.pranavkasetti;
 				PRODUCT_NAME = IAPDemo;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

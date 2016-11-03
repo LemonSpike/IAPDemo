@@ -17,18 +17,18 @@ class QuoteViewController: UIViewController {
     
     let networking = Networking()
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         getNewQuote(.Movies)
     }
     
-    func getNewQuote(type: Networking.QuoteType) {
+    func getNewQuote(_ type: Networking.QuoteType) {
         quoteLabel.text = nil
         authorLabel.text = nil
         activityIndicator.startAnimating()
         
         networking.randomMoviesQuote(type) { (quote, error) in
             if let quote = quote {
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     self.quoteLabel.text = quote.text
                     self.authorLabel.text = quote.author
                     self.activityIndicator.stopAnimating()
@@ -37,12 +37,12 @@ class QuoteViewController: UIViewController {
         }
     }
     
-    @IBAction func newQuoteButtonTapped(sender: AnyObject) {
+    @IBAction func newQuoteButtonTapped(_ sender: AnyObject) {
         let quoteType = quoteTypeForSelectedSegmentedControlIndex()
         getNewQuote(quoteType)
     }
     
-    @IBAction func segmentedControlValueChanged(sender: AnyObject) {
+    @IBAction func segmentedControlValueChanged(_ sender: AnyObject) {
         let segmentedControl = sender as! UISegmentedControl
         
         if segmentedControl.selectedSegmentIndex == 1 && !UpgradeManager.sharedInstance.hasUpgraded() {
@@ -50,22 +50,22 @@ class QuoteViewController: UIViewController {
             
             let alertController = UIAlertController(title: "Upgrade",
                                                     message: "Please upgrade to be able to view quotes from famous people",
-                                                    preferredStyle: .Alert)
+                                                    preferredStyle: .alert)
             
             let upgradeAction = UIAlertAction(title: "Upgrade",
-                                              style: .Default,
+                                              style: .default,
                                               handler: { (action) in
-                                                self.performSegueWithIdentifier("ShowUpgradeViewController", sender: nil)
+                                                self.performSegue(withIdentifier: "ShowUpgradeViewController", sender: nil)
             })
             
             let laterAction = UIAlertAction(title: "Later",
-                                            style: .Cancel,
+                                            style: .cancel,
                                             handler: nil)
             
             alertController.addAction(upgradeAction)
             alertController.addAction(laterAction)
             
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         } else {
             let quoteType = quoteTypeForSelectedSegmentedControlIndex()
             getNewQuote(quoteType)
